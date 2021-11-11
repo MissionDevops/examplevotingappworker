@@ -1,24 +1,24 @@
-apiVersion: apps/v1
+apiVersion: v1 
 kind: Deployment
 metadata:
-  name: worker-app-deploy
+  name: redis-deploy
   labels:
-    name: worker-app-deploy
+    name: redis-deploy
     app: demo-voting-app
 spec:
   replicas: 1
-  selector:
+  selector: 
     matchLabels:
-      name: worker-app-pod
+      name: worker-pod
       app: demo-voting-app
-    
   template:
     metadata:
-      name: worker-app-pod
+      name: worker-pod
       labels:
-        name: worker-app-pod
+        name: worker-pod
         app: demo-voting-app
-    spec:
-      containers:
-        - name: worker-app
-          image: kodekloud/examplevotingapp_worker:v1
+  spec: 
+  containers:
+    - name: worker-pod
+      image: dockersamples/examplevotingapp_worker
+  restartPolicy: Always
